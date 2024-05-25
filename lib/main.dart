@@ -14,16 +14,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      themeMode: ThemeMode.light,
+      // themeMode: ThemeMode.light,
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        //   primarySwatch: Colors.green,
         fontFamily: GoogleFonts.lato().fontFamily,
       ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-      ),
+      // darkTheme: ThemeData(
+      //   brightness: Brightness.dark,
+      // ),
       title: "My App",
-      // home: HomePage(),
       initialRoute: MyRoutes.homeRoute,
       routes: {
         MyRoutes.homeRoute: (context) => const HomePage(),
