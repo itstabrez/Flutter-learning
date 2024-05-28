@@ -1,5 +1,5 @@
 class CatalogModel {
-  static final products = [
+  static List<MyElectronicsCatalog> products = [
     MyElectronicsCatalog(
         id: "Codepur001",
         name: "iPhone 12 Pro",
@@ -26,4 +26,23 @@ class MyElectronicsCatalog {
       required this.price,
       required this.color,
       required this.productUrl});
+
+  factory MyElectronicsCatalog.fromMap(Map<String, dynamic> map) {
+    return MyElectronicsCatalog(
+      id: map['id'],
+      name: map['name'],
+      desc: map['desc'],
+      price: map['price'],
+      color: map['color'],
+      productUrl: map['productUrl'],
+    );
+  }
+  toMap() => {
+        "id": id,
+        'name': name,
+        'desc': desc,
+        'price': price,
+        'color': color,
+        'productUrl': productUrl,
+      };
 }
