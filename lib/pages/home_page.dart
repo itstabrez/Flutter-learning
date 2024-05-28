@@ -19,12 +19,24 @@ class _HomePageState extends State<HomePage> {
     loadData();
   }
 
-  
+  loadData() async {
+    await Future.delayed(const Duration(seconds: 2));
+    final catalogJson =
+        await rootBundle.loadString("assets/files/catalog.json");
+    final decodedData = jsonDecode(catalogJson);
+    var productsData = decodedData["products"];
+
+    CatalogModel.items = List.from(productsData)
+        .map<MyElectronicsCatalog>((item) => MyElectronicsCatalog.fromMap(item))
+        .toList();
+
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
     //BELOW IS THE CODE TO ADD DUMMY ITEMS IN LIST TILE
-    // final dummyList = List.generate(20, (index) => CatalogModel.products[0]);
+    // final dummyList = List.generate(20, (index) => CatalogModel.items[0]);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -36,15 +48,16 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
-          // itemCount: CatalogModel.products.length,
-          itemCount: CatalogModel.products.length,
-          itemBuilder: (context, index) {
-            return ItemWidget(
-              product: CatalogModel.products[index],
-            );
-          },
-        ),
+        child: (CatalogModel.items.isNotEmpty)
+            ? ListView.builder(
+                itemCount: CatalogModel.items.length,
+                itemBuilder: (context, index) => ItemWidget(
+                  products: CatalogModel.items[index],
+                ),
+              )
+            : const Center(
+                child: CircularProgressIndicator(),
+              ),
       ),
       drawer: const MyDrawer(),
     );
