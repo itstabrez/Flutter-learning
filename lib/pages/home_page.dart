@@ -19,18 +19,7 @@ class _HomePageState extends State<HomePage> {
     loadData();
   }
 
-  loadData() async {
-    final catalogJson =
-        await rootBundle.loadString('assets/files/catalog.json');
-
-    final decodedData = jsonDecode(catalogJson);
-    final productsData = decodedData.products;
-    CatalogModel.products = List.from(productsData)
-        .map<MyElectronicsCatalog>(
-            (product) => MyElectronicsCatalog.fromMap(product))
-        .toList();
-    setState(() {});
-  }
+  
 
   @override
   Widget build(BuildContext context) {
