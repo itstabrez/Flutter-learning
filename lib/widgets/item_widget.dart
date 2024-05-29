@@ -10,6 +10,7 @@ class ItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: Colors.white,
+      clipBehavior: Clip.antiAlias,
       shadowColor: Colors.blueGrey,
       // shape: StadiumBorder(),
       child: ListTile(
