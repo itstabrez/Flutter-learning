@@ -16,39 +16,8 @@ class HomeDetailsPage extends StatelessWidget {
       bottom: false,
       child: Scaffold(
         appBar: AppBar(),
-        bottomNavigationBar: Container(
-          color: Colors.white,
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: ButtonBar(
-              alignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "\$${catalog.price}",
-                  style: const TextStyle(
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
-                  ),
-                ),
-                ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor:
-                        WidgetStatePropertyAll(MyThemes.darkbluish),
-                  ),
-                  onPressed: () {},
-                  child: const Text(
-                    "Buy",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
+        bottomNavigationBar:
+            MyBottomNavigationBar(price: catalog.price.toString()),
         backgroundColor: MyThemes.creamColor,
         body: Column(
           children: [
@@ -114,4 +83,51 @@ class CustomContainerClipper extends CustomClipper<Path> {
 
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
+}
+
+// BOTTOM PRICE AND BUY BUTTON NAVIGATION BAR
+
+class MyBottomNavigationBar extends StatelessWidget {
+  final String price;
+
+  const MyBottomNavigationBar({
+    super.key,
+    required this.price,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: ButtonBar(
+          alignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "\$$price",
+              style: const TextStyle(
+                color: Colors.red,
+                fontWeight: FontWeight.bold,
+                fontSize: 25,
+              ),
+            ),
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: WidgetStatePropertyAll(MyThemes.darkbluish),
+              ),
+              onPressed: () {},
+              child: const Text(
+                "Buy",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
 }
