@@ -9,7 +9,6 @@ class MyThemes {
           elevation: 0.5,
           iconTheme: IconThemeData(color: Colors.black),
         ),
-        textTheme: Theme.of(context).textTheme,
         fontFamily: GoogleFonts.poppins().fontFamily,
       );
   static ThemeData darkTheme(BuildContext context) =>

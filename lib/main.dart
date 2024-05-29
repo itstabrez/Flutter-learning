@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // theme: ThemeData(fontFamily: GoogleFonts.poppins().fontFamily),
       // themeMode: ThemeMode.light,
       theme: MyThemes.lightTheme(context),
 
