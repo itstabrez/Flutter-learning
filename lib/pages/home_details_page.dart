@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_application_2/model/electronics_catalog.dart';
 import 'package:flutter_application_2/widgets/theme.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeDetailsPage extends StatelessWidget {
   final MyElectronicsCatalog catalog;
@@ -15,7 +16,9 @@ class HomeDetailsPage extends StatelessWidget {
     return SafeArea(
       bottom: false,
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+        ),
         bottomNavigationBar:
             MyBottomNavigationBar(price: catalog.price.toString()),
         backgroundColor: MyThemes.creamColor,
@@ -38,7 +41,8 @@ class HomeDetailsPage extends StatelessWidget {
                   width: double.infinity,
                   color: Colors.white,
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 50),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30, vertical: 40),
                     child: Column(
                       children: [
                         Text(
@@ -54,6 +58,13 @@ class HomeDetailsPage extends StatelessWidget {
                           style: TextStyle(
                               color: MyThemes.darkbluish, fontSize: 20),
                         ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          "dataOf chamber theeby the tempter of is to shall visiter sitting. A said unseen floor my, take yore a madam respiterespite, my betook my and obeisance, a i sitting raven in ungainly eyes what nevermore have, from i our tapping stern flown that had. That dreaming utters form shall his.My soul i beguiling my of curtain i many the me, i i thee evilprophet gently. Whom from hath i.",
+                          style: TextStyle(
+                            fontFamily: "lato",
+                          ),
+                        )
                       ],
                     ),
                   ),

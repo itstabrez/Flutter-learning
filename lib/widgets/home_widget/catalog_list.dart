@@ -42,8 +42,9 @@ class CatalogItem extends StatelessWidget {
       child: Container(
         height: 150,
         decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(30))),
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(30)),
+        ),
         child: Row(
           children: [
             Hero(
