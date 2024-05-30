@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/widgets/theme.dart';
 import 'package:velocity_x/velocity_x.dart';
+
+import 'package:flutter_application_2/widgets/theme.dart';
 
 class MyCartPage extends StatelessWidget {
   const MyCartPage({super.key});
