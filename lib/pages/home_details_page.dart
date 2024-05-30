@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_application_2/model/electronics_catalog.dart';
 import 'package:flutter_application_2/widgets/theme.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class HomeDetailsPage extends StatelessWidget {
   final MyElectronicsCatalog catalog;
@@ -19,9 +19,10 @@ class HomeDetailsPage extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
         ),
-        bottomNavigationBar:
-            MyBottomNavigationBar(price: catalog.price.toString()),
-        backgroundColor: MyThemes.creamColor,
+        bottomNavigationBar: MyBottomNavigationBar(
+          price: catalog.price.toString(),
+        ),
+        backgroundColor: context.canvasColor,
         body: Column(
           children: [
             Padding(
@@ -39,7 +40,7 @@ class HomeDetailsPage extends StatelessWidget {
                 clipper: CustomContainerClipper(),
                 child: Container(
                   width: double.infinity,
-                  color: Colors.white,
+                  color: context.cardColor,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 30, vertical: 40),
@@ -47,16 +48,14 @@ class HomeDetailsPage extends StatelessWidget {
                       children: [
                         Text(
                           catalog.name,
-                          style: TextStyle(
-                            color: MyThemes.darkbluish,
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 35,
                           ),
                         ),
                         Text(
                           catalog.desc,
-                          style: TextStyle(
-                              color: MyThemes.darkbluish, fontSize: 20),
+                          style: const TextStyle(fontSize: 20),
                         ),
                         const SizedBox(height: 10),
                         const Text(
@@ -109,7 +108,7 @@ class MyBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: context.cardColor,
       child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: ButtonBar(
@@ -129,7 +128,7 @@ class MyBottomNavigationBar extends StatelessWidget {
               ),
               onPressed: () {},
               child: const Text(
-                "Buy",
+                "Add to cart",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,

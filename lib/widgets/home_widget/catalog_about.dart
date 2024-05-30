@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/widgets/theme.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class AboutCatalog extends StatelessWidget {
   final String name;
@@ -20,25 +21,24 @@ class AboutCatalog extends StatelessWidget {
       children: [
         Text(
           name,
-          style: TextStyle(
-            color: MyThemes.darkbluish,
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
         Text(
           desc,
-          style: TextStyle(
-            color: MyThemes.darkbluish,
-          ),
         ),
         const SizedBox(
-          height: 5,
+          height: 7,
         ),
         ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               "\$$price",
+              style: TextStyle(
+                fontSize: 16,
+              ),
             ),
             ElevatedButton(
               style: ButtonStyle(
@@ -46,14 +46,14 @@ class AboutCatalog extends StatelessWidget {
               ),
               onPressed: () {},
               child: const Text(
-                "Buy",
+                "Add to cart",
                 style: TextStyle(
                   color: Colors.white,
                 ),
               ),
             )
           ],
-        )
+        ).w60(context)
       ],
     );
   }
