@@ -6,9 +6,6 @@ import 'package:flutter_application_2/model/electronics_catalog.dart';
 import 'package:flutter_application_2/utils/routes.dart';
 import 'package:flutter_application_2/widgets/home_widget/catalog_header.dart';
 import 'package:flutter_application_2/widgets/home_widget/catalog_list.dart';
-import 'package:flutter_application_2/widgets/drawer_page.dart';
-// import 'package:flutter_application_2/widgets/item_widget.dart';
-import 'package:flutter_application_2/widgets/theme.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -48,10 +45,9 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {
           Navigator.pushNamed(context, MyRoutes.cartDetailsRoute);
         },
-        backgroundColor: Colors.cyan[200],
         child: const Icon(CupertinoIcons.cart),
       ),
-      backgroundColor: MyThemes.creamColor,
+      backgroundColor: Theme.of(context).canvasColor,
       body: SafeArea(
         child: Container(
           decoration: const BoxDecoration(),
@@ -72,7 +68,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      drawer: const MyDrawer(),
+      // drawer: const MyDrawer(),
     );
   }
 }

@@ -3,6 +3,14 @@
 
 class CatalogModel {
   static List<MyElectronicsCatalog> items = [];
+
+  // GET ITEMS BY ID
+  static MyElectronicsCatalog getById(int id) =>
+      // ignore: null_closures
+      items.firstWhere((element) => element.id == id, orElse: null);
+
+  // GET ITEMS BY POSITION
+  static MyElectronicsCatalog getByPosition(int pos) => items[pos];
 }
 
 class MyElectronicsCatalog {

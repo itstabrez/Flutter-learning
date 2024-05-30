@@ -3,6 +3,7 @@ import 'package:flutter_application_2/model/electronics_catalog.dart';
 import 'package:flutter_application_2/pages/home_details_page.dart';
 import 'package:flutter_application_2/widgets/home_widget/catalog_about.dart';
 import 'package:flutter_application_2/widgets/home_widget/catalog_image.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class CatalogList extends StatelessWidget {
   const CatalogList({super.key});
@@ -12,7 +13,7 @@ class CatalogList extends StatelessWidget {
     return ListView.builder(
       shrinkWrap: true,
       itemBuilder: (context, index) {
-        final catalog = CatalogModel.items[index];
+        final catalog = CatalogModel.getByPosition(index);
         return InkWell(
           onTap: () => Navigator.push(
             context,
@@ -41,25 +42,20 @@ class CatalogItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 12),
       child: Container(
         height: 150,
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(30)),
+        decoration: BoxDecoration(
+          color: context.cardColor,
+          borderRadius: const BorderRadius.all(Radius.circular(30)),
         ),
         child: Row(
           children: [
             Hero(
               tag: Key(catalog.id.toString()),
-              child: Expanded(
-                child: CatalogImage(image: catalog.productUrl),
-              ),
+              child: CatalogImage(image: catalog.productUrl),
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: AboutCatalog(
-                  name: catalog.name,
-                  desc: catalog.desc,
-                  price: catalog.price.toString()),
-            )
+            AboutCatalog(
+                name: catalog.name,
+                desc: catalog.desc,
+                price: catalog.price.toString())
           ],
         ),
       ),

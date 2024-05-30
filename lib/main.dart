@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/pages/cart_Page.dart';
+import 'package:flutter_application_2/pages/cart_page.dart';
 import 'package:flutter_application_2/utils/routes.dart';
 import 'package:flutter_application_2/widgets/theme.dart';
 import 'pages/home_page.dart';
@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // theme: ThemeData(fontFamily: GoogleFonts.poppins().fontFamily),
-      // themeMode: ThemeMode.light,
-      theme: MyThemes.lightTheme(context),
+      themeMode: ThemeMode.system,
+      theme: MyThemes.darkTheme(context),
 
       title: "My App",
       initialRoute: MyRoutes.homeRoute,
