@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/model/cart.dart';
 import 'package:velocity_x/velocity_x.dart';
-
 import 'package:flutter_application_2/widgets/theme.dart';
 
 class MyCartPage extends StatelessWidget {
@@ -18,7 +18,7 @@ class MyCartPage extends StatelessWidget {
         children: [
           const _CartList().p32().expand(),
           const Divider(),
-          const _CartTotal(),
+          _CartTotal(),
         ],
       ),
     );
@@ -26,7 +26,8 @@ class MyCartPage extends StatelessWidget {
 }
 
 class _CartTotal extends StatelessWidget {
-  const _CartTotal();
+  final _cart = CartModel();
+  _CartTotal();
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,7 @@ class _CartTotal extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          "\$9999".text.xl4.make(),
+          "\$${_cart.totalPrice}".text.xl4.make(),
           const SizedBox(
             width: 30,
           ),
@@ -43,7 +44,10 @@ class _CartTotal extends StatelessWidget {
             style: ButtonStyle(
               backgroundColor: WidgetStatePropertyAll(MyThemes.darkbluish),
             ),
-            onPressed: () {},
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: "Buying not supported yet".text.make()));
+            },
             child: "Buy".text.xl2.white.make(),
           ).w24(context),
         ],
@@ -60,6 +64,7 @@ class _CartList extends StatefulWidget {
 }
 
 class __CartListState extends State<_CartList> {
+  final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -69,9 +74,10 @@ class __CartListState extends State<_CartList> {
           icon: const Icon(Icons.remove_circle_outline),
           onPressed: () {},
         ),
-        title: const Text("Item 1"),
+        title: _cart.items[index].name.text.make(),
+        subtitle: _cart.items[index].desc.text.make(),
       ),
-      itemCount: 5,
+      itemCount: _cart.items.length,
     );
   }
 }

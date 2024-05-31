@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_application_2/model/electronics_catalog.dart';
 import 'package:flutter_application_2/widgets/theme.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -59,7 +58,7 @@ class HomeDetailsPage extends StatelessWidget {
                         ),
                         const SizedBox(height: 10),
                         const Text(
-                          "dataOf chamber theeby the tempter of is to shall visiter sitting. A said unseen floor my, take yore a madam respiterespite, my betook my and obeisance, a i sitting raven in ungainly eyes what nevermore have, from i our tapping stern flown that had. That dreaming utters form shall his.My soul i beguiling my of curtain i many the me, i i thee evilprophet gently. Whom from hath i.",
+                          "dataOf chamber theeby the tempter of is to shall visiter sitting. A said unseen floor my, take yore a madam respiterespite, my betook my and obeisance, a i sitting raven in ungainly eyes what nevermore have, from i our tapping stern flown that had..",
                           style: TextStyle(
                             fontFamily: "lato",
                           ),

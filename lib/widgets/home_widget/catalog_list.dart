@@ -13,7 +13,7 @@ class CatalogList extends StatelessWidget {
     return ListView.builder(
       shrinkWrap: true,
       itemBuilder: (context, index) {
-        final catalog = CatalogModel.getByPosition(index);
+        final catalog = CatalogModel.items[index];
         return InkWell(
           onTap: () => Navigator.push(
             context,
@@ -53,9 +53,11 @@ class CatalogItem extends StatelessWidget {
               child: CatalogImage(image: catalog.productUrl),
             ),
             AboutCatalog(
-                name: catalog.name,
-                desc: catalog.desc,
-                price: catalog.price.toString())
+              name: catalog.name,
+              desc: catalog.desc,
+              price: catalog.price.toString(),
+              catalog: catalog,
+            )
           ],
         ),
       ),
