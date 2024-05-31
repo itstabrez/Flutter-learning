@@ -22,7 +22,9 @@ class MyThemes {
         appBarTheme: const AppBarTheme(
           color: Colors.white,
           elevation: 0.5,
-          iconTheme: IconThemeData(color: Colors.black),
+          iconTheme: IconThemeData(
+            color: Colors.black,
+          ),
         ),
         fontFamily: GoogleFonts.poppins().fontFamily,
       );
@@ -30,14 +32,20 @@ class MyThemes {
         brightness: Brightness.dark,
         cardColor: Colors.black,
         canvasColor: darkcreamColor,
-        textTheme: const TextTheme(bodyMedium: TextStyle(color: Colors.white)),
+        textTheme: const TextTheme(
+          bodyMedium: TextStyle(
+            color: Colors.white,
+          ),
+        ),
         floatingActionButtonTheme: FloatingActionButtonThemeData(
           backgroundColor: lightBluishColor,
         ),
         appBarTheme: const AppBarTheme(
           color: Colors.white,
           elevation: 0.5,
-          iconTheme: IconThemeData(color: Color.fromARGB(255, 255, 255, 255)),
+          iconTheme: IconThemeData(
+            color: Color.fromARGB(255, 255, 255, 255),
+          ),
         ),
         fontFamily: GoogleFonts.poppins().fontFamily,
       );

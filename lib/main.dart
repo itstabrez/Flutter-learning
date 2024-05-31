@@ -15,10 +15,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // theme: ThemeData(fontFamily: GoogleFonts.poppins().fontFamily),
       themeMode: ThemeMode.system,
-      theme: MyThemes.darkTheme(context),
-
+      theme: MyThemes.lightTheme(context),
       title: "My App",
       initialRoute: MyRoutes.homeRoute,
       routes: {
