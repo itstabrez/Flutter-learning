@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/model/electronics_catalog.dart';
-import 'package:flutter_application_2/widgets/theme.dart';
 import 'package:velocity_x/velocity_x.dart';
+
+import 'package:flutter_application_2/model/electronics_catalog.dart';
+import 'package:flutter_application_2/widgets/home_widget/add_to_cart.dart';
 
 class HomeDetailsPage extends StatelessWidget {
   final MyElectronicsCatalog catalog;
@@ -20,6 +21,7 @@ class HomeDetailsPage extends StatelessWidget {
         ),
         bottomNavigationBar: MyBottomNavigationBar(
           price: catalog.price.toString(),
+          catalog: catalog,
         ),
         backgroundColor: context.canvasColor,
         body: Column(
@@ -98,10 +100,12 @@ class CustomContainerClipper extends CustomClipper<Path> {
 
 class MyBottomNavigationBar extends StatelessWidget {
   final String price;
+  final MyElectronicsCatalog catalog;
 
   const MyBottomNavigationBar({
     super.key,
     required this.price,
+    required this.catalog,
   });
 
   @override
@@ -121,18 +125,8 @@ class MyBottomNavigationBar extends StatelessWidget {
                 fontSize: 25,
               ),
             ),
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: WidgetStatePropertyAll(MyThemes.darkbluish),
-              ),
-              onPressed: () {},
-              child: const Text(
-                "Add to cart",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                ),
-              ),
+            AddToCart(
+              catalog: catalog,
             )
           ],
         ),

@@ -25,6 +25,44 @@ class MyCartPage extends StatelessWidget {
   }
 }
 
+class _CartList extends StatefulWidget {
+  const _CartList();
+
+  @override
+  State<_CartList> createState() => __CartListState();
+}
+
+class __CartListState extends State<_CartList> {
+  final _cart = CartModel();
+  @override
+  Widget build(BuildContext context) {
+    return _cart.items.isEmpty
+        ? const Center(
+            child: Text(
+              "Nothing to show here",
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+          )
+        : ListView.builder(
+            itemBuilder: (context, index) => ListTile(
+              leading: const Icon(Icons.done),
+              trailing: IconButton(
+                icon: const Icon(Icons.remove_circle_outline),
+                onPressed: () {
+                  _cart.removeItem(_cart.items[index]);
+                  setState(() {});
+                },
+              ),
+              title: _cart.items[index].name.text.make(),
+              subtitle: _cart.items[index].desc.text.make(),
+            ),
+            itemCount: _cart.items.length,
+          );
+  }
+}
+
 class _CartTotal extends StatelessWidget {
   final _cart = CartModel();
   _CartTotal();
@@ -52,32 +90,6 @@ class _CartTotal extends StatelessWidget {
           ).w24(context),
         ],
       ),
-    );
-  }
-}
-
-class _CartList extends StatefulWidget {
-  const _CartList();
-
-  @override
-  State<_CartList> createState() => __CartListState();
-}
-
-class __CartListState extends State<_CartList> {
-  final _cart = CartModel();
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemBuilder: (context, index) => ListTile(
-        leading: const Icon(Icons.done),
-        trailing: IconButton(
-          icon: const Icon(Icons.remove_circle_outline),
-          onPressed: () {},
-        ),
-        title: _cart.items[index].name.text.make(),
-        subtitle: _cart.items[index].desc.text.make(),
-      ),
-      itemCount: _cart.items.length,
     );
   }
 }
