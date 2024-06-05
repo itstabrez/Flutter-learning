@@ -31,7 +31,6 @@ class _HomePageState extends State<HomePage> {
     CatalogModel.items = List.from(productsData)
         .map<MyElectronicsCatalog>((item) => MyElectronicsCatalog.fromMap(item))
         .toList();
-
     setState(() {});
   }
 
@@ -49,22 +48,19 @@ class _HomePageState extends State<HomePage> {
       ),
       backgroundColor: Theme.of(context).canvasColor,
       body: SafeArea(
-        child: Container(
-          decoration: const BoxDecoration(),
-          child: Padding(
-            padding: const EdgeInsets.all(30.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const CatalogHeader(),
-                if (CatalogModel.items.isNotEmpty)
-                  const Expanded(child: CatalogList())
-                else
-                  const Expanded(
-                    child: Center(child: CircularProgressIndicator.adaptive()),
-                  ),
-              ],
-            ),
+        child: Padding(
+          padding: const EdgeInsets.all(30.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const CatalogHeader(),
+              if (CatalogModel.items.isNotEmpty)
+                const Expanded(child: CatalogList())
+              else
+                const Expanded(
+                  child: Center(child: CircularProgressIndicator.adaptive()),
+                ),
+            ],
           ),
         ),
       ),

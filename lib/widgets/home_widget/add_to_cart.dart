@@ -31,8 +31,8 @@ class AddToCartState extends State<AddToCart> {
           setState(() {});
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: "Item is already added".text.make(),
+            const SnackBar(
+              content: Text("Item is already added"),
             ),
           );
         }

@@ -10,12 +10,11 @@ class MyDrawer extends StatelessWidget {
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4snbnMJIIQHOjTUqsKKNP6U4g9x7DFPgwX-tuXN-xaA&s";
     return Drawer(
       child: Container(
-        color: Colors.blueAccent,
+        color: Theme.of(context).cardColor,
         child: ListView(
           padding: EdgeInsets.zero,
           children: const [
             DrawerHeader(
-              decoration: BoxDecoration(),
               padding: EdgeInsets.zero,
               child: UserAccountsDrawerHeader(
                 margin: EdgeInsets.zero,

@@ -3,7 +3,6 @@ import 'package:flutter_application_2/model/electronics_catalog.dart';
 import 'package:flutter_application_2/pages/home_details_page.dart';
 import 'package:flutter_application_2/widgets/home_widget/catalog_about.dart';
 import 'package:flutter_application_2/widgets/home_widget/catalog_image.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class CatalogList extends StatelessWidget {
   const CatalogList({super.key});
@@ -43,7 +42,7 @@ class CatalogItem extends StatelessWidget {
       child: Container(
         height: 150,
         decoration: BoxDecoration(
-          color: context.cardColor,
+          color: Theme.of(context).cardColor,
           borderRadius: const BorderRadius.all(Radius.circular(30)),
         ),
         child: Row(
