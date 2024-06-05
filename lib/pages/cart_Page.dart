@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/model/cart.dart';
+import 'package:flutter_application_2/utils/cart_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:flutter_application_2/widgets/theme.dart';
 
@@ -18,7 +19,7 @@ class MyCartPage extends StatelessWidget {
         children: [
           Expanded(child: const _CartList().p32()),
           const Divider(),
-          _CartTotal(),
+          const _CartTotal(),
         ],
       ),
     );
@@ -33,10 +34,10 @@ class _CartList extends StatefulWidget {
 }
 
 class __CartListState extends State<_CartList> {
-  final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
-    return _cart.items.isEmpty
+    var cart = Provider.of<CartProvider>(context);
+    return cart.items.isEmpty
         ? const Center(
             child: Text(
               "Nothing to show here",
@@ -51,30 +52,31 @@ class __CartListState extends State<_CartList> {
               trailing: IconButton(
                 icon: const Icon(Icons.remove_circle_outline),
                 onPressed: () {
-                  _cart.removeItem(_cart.items[index]);
+                  cart.removeItem(cart.items[index]);
                   setState(() {});
                 },
               ),
-              title: _cart.items[index].name.text.make(),
-              subtitle: _cart.items[index].desc.text.make(),
+              title: cart.items[index].name.text.make(),
+              subtitle: cart.items[index].desc.text.make(),
             ),
-            itemCount: _cart.items.length,
+            itemCount: cart.items.length,
           );
   }
 }
 
 class _CartTotal extends StatelessWidget {
-  final _cart = CartModel();
-  _CartTotal();
+  const _CartTotal();
 
   @override
   Widget build(BuildContext context) {
+    var cart = Provider.of<CartProvider>(context);
+
     return SizedBox(
       height: 200,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          "\$${_cart.totalPrice}".text.xl4.make(),
+          "\$${cart.totalPrice}".text.xl4.make(),
           const SizedBox(
             width: 30,
           ),

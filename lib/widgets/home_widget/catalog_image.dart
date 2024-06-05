@@ -20,6 +20,7 @@ class CatalogImage extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Image.network(
             width: 100,
+            height: 120,
             image,
           ),
         ),

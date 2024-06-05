@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/model/cart.dart';
 import 'package:flutter_application_2/model/electronics_catalog.dart';
+import 'package:flutter_application_2/utils/cart_provider.dart';
 import 'package:flutter_application_2/widgets/theme.dart';
-import 'package:velocity_x/velocity_x.dart';
+import 'package:provider/provider.dart';
 
 class AddToCart extends StatefulWidget {
   final MyElectronicsCatalog catalog;
@@ -17,18 +18,15 @@ class AddToCartState extends State<AddToCart> {
   final cart = CartModel();
   @override
   Widget build(BuildContext context) {
-    bool isInCart = cart.items.contains(widget.catalog);
+    var cart = Provider.of<CartProvider>(context);
+    bool isInCart = cart.isInCart(widget.catalog);
     return ElevatedButton(
       style: ButtonStyle(
         backgroundColor: WidgetStatePropertyAll(MyThemes.darkbluish),
       ),
       onPressed: () {
         if (!isInCart) {
-          isInCart = isInCart.toggle();
-          final myCatalog = CatalogModel();
-          cart.catalog = myCatalog;
           cart.addItem(widget.catalog);
-          setState(() {});
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(

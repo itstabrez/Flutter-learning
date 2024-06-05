@@ -2,10 +2,15 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_2/model/cart.dart';
 import 'package:flutter_application_2/model/electronics_catalog.dart';
 import 'package:flutter_application_2/utils/routes.dart';
 import 'package:flutter_application_2/widgets/home_widget/catalog_header.dart';
 import 'package:flutter_application_2/widgets/home_widget/catalog_list.dart';
+import 'package:provider/provider.dart';
+import 'package:velocity_x/velocity_x.dart';
+
+import '../utils/cart_provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -36,6 +41,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var cart = Provider.of<CartProvider>(context);
+
     //BELOW IS THE CODE TO ADD DUMMY ITEMS IN LIST TILE
     // final dummyList = List.generate(20, (index) => CatalogModel.items[0]);
 
@@ -45,6 +52,14 @@ class _HomePageState extends State<HomePage> {
           Navigator.pushNamed(context, MyRoutes.cartDetailsRoute);
         },
         child: const Icon(CupertinoIcons.cart),
+      ).badge(
+        color: const Color.fromARGB(255, 196, 194, 194),
+        count: cart.items.length,
+        size: 20,
+        textStyle: const TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+        ),
       ),
       backgroundColor: Theme.of(context).canvasColor,
       body: SafeArea(
