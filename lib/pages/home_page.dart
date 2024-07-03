@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
         },
         child: const Icon(CupertinoIcons.cart),
       ).badge(
-        color: const Color.fromARGB(255, 196, 194, 194),
+        color: Colors.white,
         count: cart.items.length,
         size: 20,
         textStyle: const TextStyle(

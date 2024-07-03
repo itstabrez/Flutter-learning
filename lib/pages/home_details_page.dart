@@ -13,66 +13,63 @@ class HomeDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      bottom: false,
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-        ),
-        bottomNavigationBar: MyBottomNavigationBar(
-          price: catalog.price.toString(),
-          catalog: catalog,
-        ),
-        backgroundColor: context.canvasColor,
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Hero(
-                tag: Key(catalog.id.toString()),
-                child: Image.network(
-                  catalog.productUrl,
-                  height: 300,
-                ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
+      bottomNavigationBar: MyBottomNavigationBar(
+        price: catalog.price.toString(),
+        catalog: catalog,
+      ),
+      backgroundColor: context.canvasColor,
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Hero(
+              tag: Key(catalog.id.toString()),
+              child: Image.network(
+                catalog.productUrl,
+                height: 300,
               ),
             ),
-            Expanded(
-              child: ClipPath(
-                clipper: CustomContainerClipper(),
-                child: Container(
-                  width: double.infinity,
-                  color: context.cardColor,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 30, vertical: 40),
-                    child: Column(
-                      children: [
-                        Text(
-                          catalog.name,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 35,
-                          ),
+          ),
+          Expanded(
+            child: ClipPath(
+              clipper: CustomContainerClipper(),
+              child: Container(
+                width: double.infinity,
+                color: context.cardColor,
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 30, vertical: 40),
+                  child: Column(
+                    children: [
+                      Text(
+                        catalog.name,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 35,
                         ),
-                        Text(
-                          catalog.desc,
-                          style: const TextStyle(fontSize: 20),
+                      ),
+                      Text(
+                        catalog.desc,
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                      const SizedBox(height: 10),
+                      const Text(
+                        "dataOf chamber theeby the tempter of is to shall visiter sitting. A said unseen floor my, take yore a madam respiterespite, my betook my and obeisance, a i sitting raven in ungainly eyes what nevermore have, from i our tapping stern flown that had..",
+                        style: TextStyle(
+                          fontFamily: "lato",
                         ),
-                        const SizedBox(height: 10),
-                        const Text(
-                          "dataOf chamber theeby the tempter of is to shall visiter sitting. A said unseen floor my, take yore a madam respiterespite, my betook my and obeisance, a i sitting raven in ungainly eyes what nevermore have, from i our tapping stern flown that had..",
-                          style: TextStyle(
-                            fontFamily: "lato",
-                          ),
-                        ).py20(),
-                      ],
-                    ),
+                      ).py20(),
+                    ],
                   ),
                 ),
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }
